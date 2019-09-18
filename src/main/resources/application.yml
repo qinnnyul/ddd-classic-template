@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: bill-service
+
+  # datasource
+  datasource:
+    url: jdbc:mysql://duyunchao.cnl8kfmtcl8i.rds.cn-northwest-1.amazonaws.com.cn:3306/billdb?useUnicode=yes&characterEncoding=UTF-8
+    username: duyunchao
+    password: Amazon.aws
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      jadira:
+        usertype:
+          autoRegisterUserTypes: true
