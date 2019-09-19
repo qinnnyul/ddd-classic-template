@@ -1,4 +1,4 @@
-# 电票上下文
+# DDD代码脚手架
 
 ## 代码规范
 * 项目包名请使用单数
@@ -8,23 +8,21 @@
 * 请使用lombok，取代Getter，Setter和toString等
 * 实体的ID生成器，可以使用工具类里面的生成器，`SnowflakeIdGenerator`或者`UUIDGenerator`
 * 命名规范：
-    * XXXApi(资源接口)
+    * XXXController(资源接口)
+    * XXXRequest（DTO请求对象）
+    * XXXResponse(DTO返回对象)
     * XXXAppService（应用服务）
-    * XXXService（领域服务, 三方服务）
-    * XXXServiceImpl(基础层服务实现)
+    * XXXRepository (资源库)
+   
 
 ## Restful风格
 
 | 场景 | 动作 | 路径 | 响应
 | ------ | ------ | ------ | ------ |
-|查询银行承兑汇票票面信息|GET| /api/v1/bank-acceptance-bills/{billNo} |200， 400， 401， 403， 5XX|
-|查询某个银行承兑汇票历史信息|GET| /api/v1/bank-acceptance-bills/{billNo}/histories |200， 400， 401， 403， 5XX|
-|提交出票申请|POST|/api/v1/commands/issue-apply | 201， 400， 401， 403，5XX|
-|提交背书申请|POST | /api/v1/commands/transfer-apply |201,  400， 401， 403， 5XX|
-|提交批量出票申请| POST |/api/v1/commands/batch-issue-apply |201， 401， 403， 5XX|
-|审批或者撤销申请|PUT| /api/v1/commands/{commandId}/action |200， 400， 401， 403， 5XX|
-|查询某个申请详情|GET| /api/v1/commands/{commandId} |200， 400， 401， 403， 5XX|
-|查询某个申请的指令历史记录|GET| /api/v1/commands/{commandId}/histories |200， 400， 401， 403， 5XX|
+|查询用户信息|GET| /demo-users/{userId} |200， 400， 401， 403， 5XX|
+|创建用户|POST| /demo-users |201， 400， 401， 403， 5XX|
+|修改用户|PUT|/demo-users/{userId} | 200， 400， 401， 403，5XX|
+|删除用户|DELETE | /demo-users/{userId} |200,  400， 401， 403， 5XX|
 
 ## 分层架构
 
@@ -91,6 +89,6 @@
 ## 本地强制检测
 * Checkstyle编码风格。
 * 提交日志检测。e.g:“[Your name] commit messages”。
-* 测试覆盖率检测， 分支和语句覆盖率大于70%。
+* 测试覆盖率检测， 分支和语句覆盖率大于80%。
 * Push前，本地强制运行mvn clean package。  
 # ddd-classic-template
