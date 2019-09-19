@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ddd</groupId>
-	<artifactId>demoe</artifactId>
+	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ddd-demo-service</name>
 	<description>Demo project for Spring Boot</description>
@@ -95,7 +95,7 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>2.7.22</version>
+			<version>3.0.0</version>
 			<scope>test</scope>
 		</dependency>
 

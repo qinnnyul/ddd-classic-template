@@ -1,12 +1,17 @@
 package com.ddd.demo.api;
 
 import com.ddd.demo.ControllerBaseTest;
+import com.ddd.demo.api.dto.DemoUserResponse;
 import com.ddd.demo.application.DemoUserAppService;
-import com.ddd.demo.domain.DemoUser;
+import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Before;
 import org.junit.Test;
 
+import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 
 public class DemoUserControllerTest extends ControllerBaseTest {
 
@@ -15,19 +20,22 @@ public class DemoUserControllerTest extends ControllerBaseTest {
 
     @Before
     public void setUp() throws Exception {
-        DemoUser user = DemoUser.builder().id("user").age(18).name("yulin").build();
         demoUserAppService = mock(DemoUserAppService.class);
-
-
+        RestAssuredMockMvc.standaloneSetup(new DemoUserController(demoUserAppService));
     }
 
     @Test
-    public void shouldName() {
+    public void shouldGetDemoUserResponse() {
         //given
 
+        DemoUserResponse response = DemoUserResponse.builder().age(19).name("yulin").build();
 
+        String demoUserId = "test-id";
+
+        when(demoUserAppService.getDemoUserById(demoUserId)).thenReturn(response);
         //when
 
+        given().when().get("/demo-users/" + demoUserId).then().statusCode(200).body("age", equalTo(19));
 
         //then
     }

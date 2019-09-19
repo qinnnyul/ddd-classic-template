@@ -7,9 +7,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @SpringBootApplication
 //CHECKSTYLE:OFF
-public class BillServiceApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(BillServiceApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
