@@ -1,10 +1,10 @@
 package com.ddd.demo.infrastructure;
 
+import com.ddd.demo.common.util.BeanMapper;
 import com.ddd.demo.domain.DemoUser;
 import com.ddd.demo.domain.DemoUserRepository;
 import com.ddd.demo.infrastructure.dao.DemoUserDao;
 import com.ddd.demo.infrastructure.po.DemoUserPo;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,8 +22,8 @@ public class DemoUserRepositoryImpl implements DemoUserRepository {
 
     @Override
     public DemoUser addDemoUser(DemoUser demoUser) {
-        ModelMapper modelMapper = new ModelMapper();
-        DemoUserPo demoUserPo = modelMapper.map(demoUser, DemoUserPo.class);
+        DemoUserPo demoUserPo = BeanMapper.instance().map(demoUser, DemoUserPo.class);
+
         this.demoUserDao.save(demoUserPo);
 
         return demoUser;
@@ -41,8 +41,7 @@ public class DemoUserRepositoryImpl implements DemoUserRepository {
 
     @Override
     public Optional<DemoUser> update(DemoUser demoUser) {
-        ModelMapper modelMapper = new ModelMapper();
-        DemoUserPo demoUserPo = modelMapper.map(demoUser, DemoUserPo.class);
+        DemoUserPo demoUserPo = BeanMapper.instance().map(demoUser, DemoUserPo.class);
         this.demoUserDao.save(demoUserPo);
 
         return getById(demoUser.getId());

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class DemoUserController {
     private DemoUserAppService demoUserAppService;
 
-    public DemoUserController(DemoUserAppService demoUserAppService) {
+    DemoUserController(DemoUserAppService demoUserAppService) {
         this.demoUserAppService = demoUserAppService;
     }
 
