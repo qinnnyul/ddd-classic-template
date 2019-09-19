@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: bill-service
+    name: ddd-demo-service
 
   # datasource
   datasource:

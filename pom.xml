@@ -11,7 +11,7 @@
 	<groupId>com.ddd</groupId>
 	<artifactId>demoe</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bill-service</name>
+	<name>ddd-demo-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -81,15 +81,21 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-module-junit4</artifactId>
-			<version>${powermock.version}</version>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>3.0.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-api-mockito2</artifactId>
-			<version>${powermock.version}</version>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-mock-mvc</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.7.22</version>
 			<scope>test</scope>
 		</dependency>
 

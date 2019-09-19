@@ -1,4 +1,4 @@
 package com.ddd.demo.application;
 
-public class DemoUserApplication {
+public class DemoUserAppService {
 }
