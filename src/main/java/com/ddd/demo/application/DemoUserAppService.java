@@ -26,6 +26,10 @@ public class DemoUserAppService {
     }
 
     public DemoUserResponse addDemoUser(DemoUserRequest demoUserRequest) {
-        return null;
+        ModelMapper modelMapper = new ModelMapper();
+        DemoUser user = modelMapper.map(demoUserRequest, DemoUser.class);
+
+        DemoUser savedUser = this.demoUserRepository.addDemoUser(user);
+        return modelMapper.map(savedUser, DemoUserResponse.class);
     }
 }

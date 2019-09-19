@@ -1,5 +1,6 @@
 package com.ddd.demo.application;
 
+import com.ddd.demo.api.dto.DemoUserRequest;
 import com.ddd.demo.api.dto.DemoUserResponse;
 import com.ddd.demo.domain.DemoUser;
 import com.ddd.demo.domain.DemoUserRepository;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -50,5 +52,17 @@ public class DemoUserAppServiceTest {
         demoUserAppService.getDemoUserById("not-exist");
     }
 
+    @Test
+    public void shouldReturnUserResponseWhenAddDemoUserSuccess() {
+        //given
+        DemoUserRequest request = DemoUserRequest.builder().age(18).name("yulin").build();
+        DemoUser demoUser = DemoUser.builder().id("test-id").age(18).name("yulin").build();
+        when(demoUserRepository.addDemoUser(any(DemoUser.class))).thenReturn(demoUser);
+        //when
+        DemoUserResponse response = demoUserAppService.addDemoUser(request);
 
+        //then
+        assertThat(response.getId(), is("test-id"));
+
+    }
 }
