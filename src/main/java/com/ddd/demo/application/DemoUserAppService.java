@@ -1,5 +1,6 @@
 package com.ddd.demo.application;
 
+import com.ddd.demo.api.dto.DemoUserRequest;
 import com.ddd.demo.api.dto.DemoUserResponse;
 import com.ddd.demo.domain.DemoUser;
 import com.ddd.demo.domain.DemoUserRepository;
@@ -22,5 +23,9 @@ public class DemoUserAppService {
 
         ModelMapper mapper = new ModelMapper();
         return mapper.map(user, DemoUserResponse.class);
+    }
+
+    public DemoUserResponse addDemoUser(DemoUserRequest demoUserRequest) {
+        return null;
     }
 }

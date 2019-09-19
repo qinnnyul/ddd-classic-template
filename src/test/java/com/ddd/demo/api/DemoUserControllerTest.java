@@ -1,8 +1,10 @@
 package com.ddd.demo.api;
 
 import com.ddd.demo.ControllerBaseTest;
+import com.ddd.demo.api.dto.DemoUserRequest;
 import com.ddd.demo.api.dto.DemoUserResponse;
 import com.ddd.demo.application.DemoUserAppService;
+import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,9 +37,28 @@ public class DemoUserControllerTest extends ControllerBaseTest {
         when(demoUserAppService.getDemoUserById(demoUserId)).thenReturn(response);
         //when
 
-        given().when().get("/demo-users/" + demoUserId).then().statusCode(200).body("age", equalTo(19));
+        given()
+                .when().get("/demo-users/" + demoUserId)
+                .then().statusCode(200).body("age", equalTo(19));
 
         //then
+    }
+
+    @Test
+    public void shouldReturn201WhenAddDemoUser() {
+        //given
+        DemoUserRequest request = DemoUserRequest.builder().age(19).name("yulin").build();
+        String id = "test-id";
+        DemoUserResponse response = DemoUserResponse.builder().id(id).age(19).name("yulin").build();
+
+        //when
+        when(demoUserAppService.addDemoUser(request)).thenReturn(response);
+
+        //then
+        given()
+                .contentType(ContentType.JSON).body(request)
+                .when().post("/demo-users")
+                .then().statusCode(201);
     }
 
 }

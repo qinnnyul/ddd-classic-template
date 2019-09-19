@@ -49,4 +49,6 @@ public class DemoUserAppServiceTest {
         //when
         demoUserAppService.getDemoUserById("not-exist");
     }
+
+
 }
