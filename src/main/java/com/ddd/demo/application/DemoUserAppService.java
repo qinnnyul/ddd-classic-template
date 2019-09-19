@@ -4,7 +4,7 @@ import com.ddd.demo.api.dto.DemoUserRequest;
 import com.ddd.demo.api.dto.DemoUserResponse;
 import com.ddd.demo.domain.DemoUser;
 import com.ddd.demo.domain.DemoUserRepository;
-import com.ddd.demo.domain.BussinessException;
+import com.ddd.demo.common.exception.BussinessException;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

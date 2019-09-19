@@ -1,4 +1,4 @@
-package com.ddd.demo.domain;
+package com.ddd.demo.common.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

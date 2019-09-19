@@ -6,5 +6,5 @@
 
 <suppressions>
     <suppress checks="HideUtilityClassConstructor"
-              files="BillServiceApplication.java"/>
+              files="Application.java"/>
 </suppressions>
