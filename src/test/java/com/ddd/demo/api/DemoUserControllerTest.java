@@ -39,4 +39,5 @@ public class DemoUserControllerTest extends ControllerBaseTest {
 
         //then
     }
+
 }
