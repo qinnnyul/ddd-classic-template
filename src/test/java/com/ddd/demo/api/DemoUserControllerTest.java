@@ -1,6 +1,5 @@
 package com.ddd.demo.api;
 
-import com.ddd.demo.ControllerBaseTest;
 import com.ddd.demo.api.dto.DemoUserRequest;
 import com.ddd.demo.api.dto.DemoUserResponse;
 import com.ddd.demo.application.DemoUserAppService;
@@ -48,11 +47,6 @@ public class DemoUserControllerTest extends ControllerBaseTest {
     public void shouldReturn201WhenAddDemoUser() {
         //given
         DemoUserRequest request = DemoUserRequest.builder().age(19).name("yulin").build();
-        String id = "test-id";
-        DemoUserResponse response = DemoUserResponse.builder().id(id).age(19).name("yulin").build();
-
-        //when
-        when(demoUserAppService.addDemoUser(request)).thenReturn(response);
 
         //then
         given()

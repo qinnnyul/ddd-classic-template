@@ -1,1 +1,1 @@
-.*billservice\.common.*
+.Test*

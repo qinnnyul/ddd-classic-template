@@ -9,16 +9,18 @@ import org.junit.runner.RunWith;
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 
 @RunWith(ArchUnitRunner.class)
-@AnalyzeClasses(packages = "com.nbcb.billservice.bill")
-public class BillLayeredArchitectureTest {
+@AnalyzeClasses(packages = "com.ddd.demo")
+public class LayeredArchitectureTest {
     @ArchTest
     public static final ArchRule layer_dependencies_are_respected = layeredArchitecture()
 
-            .layer("Application").definedBy("com.nbcb.billservice.bill.application..")
-            .layer("Domain").definedBy("com.nbcb.billservice.bill.domain..")
-            .layer("Infrastructure").definedBy("com.nbcb.billservice.bill.infrastructure..")
+            .layer("Api").definedBy("com.ddd.demo.api..")
+            .layer("Application").definedBy("com.ddd.demo.application..")
+            .layer("Domain").definedBy("com.ddd.demo.domain..")
+            .layer("Infrastructure").definedBy("com.ddd.demo.infrastructure..")
 
+            .whereLayer("Api").mayOnlyBeAccessedByLayers("Application")
+            .whereLayer("Application").mayOnlyBeAccessedByLayers("Api")
             .whereLayer("Domain").mayOnlyBeAccessedByLayers("Application", "Infrastructure")
-            .whereLayer("Application").mayOnlyBeAccessedByLayers("Infrastructure")
             .whereLayer("Infrastructure").mayNotBeAccessedByAnyLayer();
 }

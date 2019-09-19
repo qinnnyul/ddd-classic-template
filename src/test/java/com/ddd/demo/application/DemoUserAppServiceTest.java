@@ -4,7 +4,7 @@ import com.ddd.demo.api.dto.DemoUserRequest;
 import com.ddd.demo.api.dto.DemoUserResponse;
 import com.ddd.demo.domain.DemoUser;
 import com.ddd.demo.domain.DemoUserRepository;
-import com.ddd.demo.infrastructure.exception.BussinessException;
+import com.ddd.demo.domain.BussinessException;
 import org.junit.Before;
 import org.junit.Test;
 
