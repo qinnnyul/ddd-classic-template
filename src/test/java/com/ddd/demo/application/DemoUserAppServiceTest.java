@@ -3,6 +3,7 @@ package com.ddd.demo.application;
 import com.ddd.demo.api.dto.DemoUserResponse;
 import com.ddd.demo.domain.DemoUser;
 import com.ddd.demo.domain.DemoUserRepository;
+import com.ddd.demo.infrastructure.exception.BussinessException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,5 +37,16 @@ public class DemoUserAppServiceTest {
         //then
         assertThat(response.getId(), is(id));
         assertThat(response.getName(), is("yulin"));
+    }
+
+    @Test(expected = BussinessException.class)
+    public void shouldGetExceptionWhenUserNotExist() {
+        //given
+        String id = "user-id";
+        Optional<DemoUser> demoUser = Optional.of(DemoUser.builder().id(id).age(18).name("yulin").build());
+        when(demoUserRepository.getById(id)).thenReturn(demoUser);
+
+        //when
+        demoUserAppService.getDemoUserById("not-exist");
     }
 }
