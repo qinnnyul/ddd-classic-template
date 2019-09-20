@@ -26,7 +26,29 @@
 
 ## 分层架构
 
+
 ```
+### 代码分层
+
+├── Application.java
+├── api  《接口层》
+│   ├── DemoUserController.java
+│   ├── assembler
+│   └── dto
+├── application 《应用层》
+│   └── DemoUserAppService.java
+├── common 《公用层》
+│   ├── config
+│   ├── exception
+│   └── util
+├── domain 《领域层》
+│   ├── DemoUser.java
+│   └── DemoUserRepository.java
+└── infrastructure 《基础设施层》
+    ├── DemoUserRepositoryImpl.java
+    ├── dao
+    └── po
+
 
 ### 单聚合
 ├── application 《应用层》
@@ -48,6 +70,7 @@
 │   ├── external - 三方服务接口实现
 │   ├── persistence - 资源库实现
 │   └── util
+
 
 ### 多聚合
 
