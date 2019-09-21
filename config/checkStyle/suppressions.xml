@@ -7,4 +7,6 @@
 <suppressions>
     <suppress checks="HideUtilityClassConstructor"
               files="Application.java"/>
+    <suppress checks="HideUtilityClassConstructor"
+              files="DemoUserAssembler.java"/>
 </suppressions>
