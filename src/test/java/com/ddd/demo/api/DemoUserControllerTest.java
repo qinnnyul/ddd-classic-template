@@ -2,7 +2,7 @@ package com.ddd.demo.api;
 
 import com.ddd.demo.api.dto.DemoUserRequest;
 import com.ddd.demo.api.dto.DemoUserResponse;
-import com.ddd.demo.application.DemoUserAppService;
+import com.ddd.demo.application.DemoUserService;
 import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Before;
@@ -16,13 +16,13 @@ import static org.mockito.Mockito.when;
 
 public class DemoUserControllerTest extends ControllerBaseTest {
 
-    private DemoUserAppService demoUserAppService;
+    private DemoUserService demoUserService;
 
 
     @Before
     public void setUp() throws Exception {
-        demoUserAppService = mock(DemoUserAppService.class);
-        RestAssuredMockMvc.standaloneSetup(new DemoUserController(demoUserAppService));
+        demoUserService = mock(DemoUserService.class);
+        RestAssuredMockMvc.standaloneSetup(new DemoUserController(demoUserService));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class DemoUserControllerTest extends ControllerBaseTest {
 
         String demoUserId = "test-id";
 
-        when(demoUserAppService.getDemoUserById(demoUserId)).thenReturn(response);
+        when(demoUserService.getDemoUserById(demoUserId)).thenReturn(response);
         //when
 
         given()

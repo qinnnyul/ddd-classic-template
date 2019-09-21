@@ -35,8 +35,8 @@ public class NamingConventionTest {
             .that()
             .resideInAnyPackage("com.ddd.demo.application")
             .should()
-            .haveNameMatching(".*AppService")
-            .as("应用服务的类应该以AppService结尾");
+            .haveNameMatching(".*Service")
+            .as("应用服务的类应该以Service结尾");
 
     @ArchTest
     public static final ArchRule Dao_must_endwith_dao_in_infrastructure_layer = classes()

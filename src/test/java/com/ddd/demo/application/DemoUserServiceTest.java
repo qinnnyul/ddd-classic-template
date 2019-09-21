@@ -16,14 +16,14 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class DemoUserAppServiceTest {
+public class DemoUserServiceTest {
     private DemoUserRepository demoUserRepository;
-    private DemoUserAppService demoUserAppService;
+    private DemoUserService demoUserService;
 
     @Before
     public void setUp() throws Exception {
         demoUserRepository = mock(DemoUserRepository.class);
-        demoUserAppService = new DemoUserAppService(demoUserRepository);
+        demoUserService = new DemoUserService(demoUserRepository);
     }
 
     @Test
@@ -34,7 +34,7 @@ public class DemoUserAppServiceTest {
         when(demoUserRepository.getById(id)).thenReturn(demoUser);
 
         //when
-        DemoUserResponse response = demoUserAppService.getDemoUserById(id);
+        DemoUserResponse response = demoUserService.getDemoUserById(id);
 
         //then
         assertThat(response.getId(), is(id));
@@ -49,7 +49,7 @@ public class DemoUserAppServiceTest {
         when(demoUserRepository.getById(id)).thenReturn(demoUser);
 
         //when
-        demoUserAppService.getDemoUserById("not-exist");
+        demoUserService.getDemoUserById("not-exist");
     }
 
     @Test
@@ -59,7 +59,7 @@ public class DemoUserAppServiceTest {
         DemoUser demoUser = DemoUser.builder().id("test-id").age(18).name("yulin").build();
         when(demoUserRepository.addDemoUser(any(DemoUser.class))).thenReturn(demoUser);
         //when
-        DemoUserResponse response = demoUserAppService.addDemoUser(request);
+        DemoUserResponse response = demoUserService.addDemoUser(request);
 
         //then
         assertThat(response.getId(), is("test-id"));
