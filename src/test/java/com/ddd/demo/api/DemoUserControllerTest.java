@@ -55,4 +55,18 @@ public class DemoUserControllerTest extends ControllerBaseTest {
                 .then().statusCode(201);
     }
 
+    @Test
+    public void shouldReturn400WhenDtoRequestIsInvalid() {
+        //given
+        //given
+        DemoUserRequest request = DemoUserRequest.builder().age(19).build();
+
+        //when
+
+        //then
+        given()
+                .contentType(ContentType.JSON).body(request)
+                .when().post("/demo-users")
+                .then().statusCode(400);
+    }
 }

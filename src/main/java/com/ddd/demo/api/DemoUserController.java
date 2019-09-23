@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/demo-users")
 public class DemoUserController {
@@ -25,7 +27,7 @@ public class DemoUserController {
     @PostMapping
     @ApiOperation("创建用户")
     @ResponseStatus(HttpStatus.CREATED)
-    public DemoUserResponse addDemoUser(@RequestBody DemoUserRequest request) {
+    public DemoUserResponse addDemoUser(@Valid @RequestBody DemoUserRequest request) {
         return this.demoUserService.addDemoUser(request);
     }
 
