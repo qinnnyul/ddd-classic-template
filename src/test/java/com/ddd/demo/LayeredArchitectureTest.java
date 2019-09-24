@@ -19,7 +19,7 @@ public class LayeredArchitectureTest {
             .layer("Domain").definedBy("com.ddd.demo.domain..")
             .layer("Infrastructure").definedBy("com.ddd.demo.infrastructure..")
 
-            .whereLayer("Application").mayNotBeAccessedByAnyLayer()
+            .whereLayer("Application").mayOnlyBeAccessedByLayers("Infrastructure")
             .whereLayer("Domain").mayOnlyBeAccessedByLayers( "Application", "Infrastructure")
             .whereLayer("Infrastructure").mayNotBeAccessedByAnyLayer();
 }
