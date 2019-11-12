@@ -6,13 +6,13 @@ spring:
 
   # datasource
   datasource:
-    url: jdbc:mysql://duyunchao.cnl8kfmtcl8i.rds.cn-northwest-1.amazonaws.com.cn:3306/billdb?useUnicode=yes&characterEncoding=UTF-8
-    username: duyunchao
-    password: Amazon.aws
+    url: jdbc:h2:mem:demo;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;INIT=CREATE SCHEMA IF NOT EXISTS "public";
+    driverClassName: org.h2.Driver
+
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       jadira:
         usertype:
