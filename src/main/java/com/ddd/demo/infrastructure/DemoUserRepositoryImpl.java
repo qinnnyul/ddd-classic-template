@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class DemoUserRepositoryImpl implements DemoUserRepository {
@@ -22,8 +23,8 @@ public class DemoUserRepositoryImpl implements DemoUserRepository {
 
     @Override
     public DemoUser addDemoUser(DemoUser demoUser) {
+        demoUser.setId(UUID.randomUUID().toString());
         DemoUserPo demoUserPo = BeanMapper.instance().map(demoUser, DemoUserPo.class);
-
         this.demoUserDao.save(demoUserPo);
 
         return demoUser;

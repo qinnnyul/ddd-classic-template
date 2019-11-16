@@ -1,9 +1,7 @@
 package com.ddd.demo.infrastructure.po;
 
 import com.ddd.demo.domain.DemoUser;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +10,8 @@ import javax.persistence.Id;
 @Getter
 @Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class DemoUserPo {
     @Id
     private String id;
