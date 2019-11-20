@@ -38,13 +38,13 @@
 ├── application 《应用层》
 │   └── DemoUserAppService.java
 ├── common 《公用层》
-│   ├── config
 │   ├── exception
 │   └── util
 ├── domain 《领域层》
 │   ├── DemoUser.java
 │   └── DemoUserRepository.java
 └── infrastructure 《基础设施层》
+│   ├── config
     ├── DemoUserRepositoryImpl.java
     ├── dao
     └── po
@@ -90,6 +90,16 @@
 ```
 
 ## 分层职责和依赖关系
+* ```用户接口层```（API）主要暴露微服务的接口，它处理接受来自前端的请求（XXRequestDto），对数据进行基本的校验（e.g：字段非空、格式规则校验等），将Dto传递给
+应用层，获取应用服务处理后的返回数据，进行简单组装（XXResponseDto），返回给前端 - 这应该是非常薄的一层。
+
+* ```应用层``` 负责处理业务用例的执行顺序和结果组装，主要做一些组合、编排和转发等
+
+* ```领域层``` 负责表达业务概念，业务状态信息以及业务规则。
+
+* ```基础设施层```  向其他层提供通用的技术能力， 为应用层传递消息，为领域层提供持久化机制，为用户界面层绘制屏幕组件等
+
+
 ![分层职责.png](https://upload-images.jianshu.io/upload_images/12636540-909226d57da7eec7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 架构守护
